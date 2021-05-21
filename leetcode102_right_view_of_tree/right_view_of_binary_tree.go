@@ -6,19 +6,40 @@ type TreeNode struct {
 	right *TreeNode
 }
 
-func rightViewOfBinaryTree(root *TreeNode) []int {
-	ret := []int{}
-	if root == nil {
-		return ret
+func levelOrder(root *TreeNode) (res []int) {
+	q := []*TreeNode{}
+	if root != nil {
+		q = append(q, root)
+	}
+	for i := 0; len(q) > 0; i++ {
+		temp := []*TreeNode{}
+		for j := 0; j < len(q); j++ {
+			node := q[j]
+			res = append(res, node.val)
+			if node.left != nil {
+				temp = append(temp, node.left)
+			}
+			if node.right != nil {
+				temp = append(temp, node.right)
+			}
+		}
+		q = temp
 	}
 
-	q := []*TreeNode{root}
+	return
+}
+
+func rightViewOfBinaryTree(root *TreeNode) (res []int) {
+	q := []*TreeNode{}
+	if root != nil {
+		q = append(q, root)
+	}
 	for i := 0; len(q) > 0; i++ {
 		temp := []*TreeNode{}
 		for j := 0; j < len(q); j++ {
 			node := q[j]
 			if j == len(q)-1 {
-				ret = append(ret, node.val)
+				res = append(res, node.val)
 			}
 			if node.left != nil {
 				temp = append(temp, node.left)
@@ -30,5 +51,5 @@ func rightViewOfBinaryTree(root *TreeNode) []int {
 		q = temp
 	}
 
-	return ret
+	return
 }

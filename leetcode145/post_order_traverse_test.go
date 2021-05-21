@@ -6,6 +6,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var (
+	_ interface{} = map[string]string(nil) // notice: this map variable cannot be used to set key value pair, it must be initialized with make function specifically.
+	_ interface{} = []int(nil)             // this slice of int variable can be used to insert with append function but cannot used to insert with index directly.
+	_ interface{} = (*TreeNode)(nil)
+	_ interface{} = (*string)(nil)
+	_ chan int    = (chan int)(nil)
+)
+
 var tree1 = &TreeNode{
 	val: 8,
 	left: &TreeNode{
