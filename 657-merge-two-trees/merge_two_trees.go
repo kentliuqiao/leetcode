@@ -6,13 +6,10 @@ type TreeNode struct {
 }
 
 func mergeTwoTrees(root1, root2 *TreeNode) *TreeNode {
-	if root1 == nil && root2 == nil {
-		return nil
-	}
-	if root1 == nil && root2 != nil {
+	if root1 == nil {
 		return root2
 	}
-	if root1 != nil && root2 == nil {
+	if root2 == nil {
 		return root1
 	}
 	root := &TreeNode{val: root1.val + root2.val}
