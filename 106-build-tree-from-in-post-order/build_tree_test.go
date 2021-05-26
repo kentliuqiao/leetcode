@@ -41,3 +41,9 @@ func TestBuildTree(t *testing.T) {
 		assert.Equal(t, c.want, buildTree(c.inOrder, c.postOrder))
 	}
 }
+
+func TestBuildTreeV2(t *testing.T) {
+	for _, c := range cases {
+		assert.Equal(t, c.want, buildTreeV2(c.inOrder, c.postOrder))
+	}
+}

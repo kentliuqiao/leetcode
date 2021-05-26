@@ -5,7 +5,7 @@ type TreeNode struct {
 	left, right *TreeNode
 }
 
-func buildTree(preOrder, inOrder []int) *TreeNode {
+func buildTreeV2(preOrder, inOrder []int) *TreeNode {
 	idxMap := make(map[int]int)
 	for k, v := range inOrder {
 		idxMap[v] = k
@@ -24,4 +24,20 @@ func buildTree(preOrder, inOrder []int) *TreeNode {
 		return root
 	}
 	return build(0, len(inOrder)-1)
+}
+
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	if len(preorder) == 0 {
+		return nil
+	}
+	root := &TreeNode{preorder[0], nil, nil}
+	i := 0
+	for ; i < len(inorder); i++ {
+		if inorder[i] == preorder[0] {
+			break
+		}
+	}
+	root.left = buildTree(preorder[1:len(inorder[:i])+1], inorder[:i])
+	root.right = buildTree(preorder[len(inorder[:i])+1:], inorder[i+1:])
+	return root
 }

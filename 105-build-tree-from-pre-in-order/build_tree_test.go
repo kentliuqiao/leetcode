@@ -38,6 +38,12 @@ var cases = []struct {
 
 func TestBuildTree(t *testing.T) {
 	for _, c := range cases {
-		assert.Equal(t, c.want, buildTree(c.inOrder, c.preOrder))
+		assert.Equal(t, c.want, buildTree(c.preOrder, c.inOrder))
+	}
+}
+
+func TestBuildTreeV2(t *testing.T) {
+	for _, c := range cases {
+		assert.Equal(t, c.want, buildTreeV2(c.preOrder, c.inOrder))
 	}
 }
