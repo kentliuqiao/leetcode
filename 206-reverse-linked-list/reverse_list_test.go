@@ -49,3 +49,19 @@ func Test_reverseListRecursive(t *testing.T) {
 		})
 	}
 }
+
+func Test_reverseListV2(t *testing.T) {
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, reverseListV2(tt.args.head))
+		})
+	}
+}
+
+func Test_reverseListV3(t *testing.T) {
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, reverseListV3(tt.args.head))
+		})
+	}
+}
