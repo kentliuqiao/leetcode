@@ -7,20 +7,20 @@ import (
 )
 
 var tree = &TreeNode{
-	val: 12,
-	left: &TreeNode{
-		val: 3,
-		left: &TreeNode{
-			val: 83,
-			right: &TreeNode{
-				val: 5,
+	Val: 12,
+	Left: &TreeNode{
+		Val: 3,
+		Left: &TreeNode{
+			Val: 83,
+			Right: &TreeNode{
+				Val: 5,
 			},
 		},
 	},
-	right: &TreeNode{
-		val: 4,
-		right: &TreeNode{
-			val: 1,
+	Right: &TreeNode{
+		Val: 4,
+		Right: &TreeNode{
+			Val: 1,
 		},
 	},
 }
@@ -34,7 +34,7 @@ var cases = []struct {
 		want: 3,
 	},
 	{
-		tree: &TreeNode{val: 1, left: &TreeNode{val: 2}},
+		tree: &TreeNode{Val: 1, Left: &TreeNode{Val: 2}},
 		want: 2,
 	},
 	{
@@ -46,5 +46,6 @@ var cases = []struct {
 func TestMinDepth(t *testing.T) {
 	for _, c := range cases {
 		assert.Equal(t, c.want, minDepth(c.tree))
+		assert.Equal(t, c.want, bfs(c.tree))
 	}
 }
