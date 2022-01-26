@@ -2,7 +2,7 @@ package invertbinarytree
 
 type TreeNode struct {
 	val         int
-	left, right *TreeNode
+	Left, Right *TreeNode
 }
 
 func invertBinaryTree(root *TreeNode) *TreeNode {
@@ -13,12 +13,12 @@ func invertBinaryTree(root *TreeNode) *TreeNode {
 	for len(q) > 0 {
 		nextLevel := []*TreeNode{}
 		for i, node := range q {
-			q[i].left, q[i].right = q[i].right, q[i].left
-			if node.left != nil {
-				nextLevel = append(nextLevel, node.left)
+			q[i].Left, q[i].Right = q[i].Right, q[i].Left
+			if node.Left != nil {
+				nextLevel = append(nextLevel, node.Left)
 			}
-			if node.right != nil {
-				nextLevel = append(nextLevel, node.right)
+			if node.Right != nil {
+				nextLevel = append(nextLevel, node.Right)
 			}
 		}
 		q = nextLevel
@@ -31,9 +31,9 @@ func invertBinaryTreeRecursive(root *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
 	}
-	left := invertBinaryTreeRecursive(root.left)
-	right := invertBinaryTreeRecursive(root.right)
-	root.left = right
-	root.right = left
+	left := invertBinaryTreeRecursive(root.Left)
+	right := invertBinaryTreeRecursive(root.Right)
+	root.Left = right
+	root.Right = left
 	return root
 }
